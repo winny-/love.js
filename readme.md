@@ -30,5 +30,5 @@ Currently does not work due to what looks to be a bitness error somewhere:
 Error: main.lua:31: Cannot push love object to Lua: unexpected alignment (pointer is 0xd9a258 but alignment should be 16)
 ```
 
-## Contributing
-Please consider submitting a test. Any functionality that isn't covered in `spec/tests` would be very useful.
+## Building
+Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.sh` (with minor changes for file paths)
