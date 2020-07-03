@@ -1,6 +1,6 @@
 {
   "name": "love.js",
-  "version": "0.11.0-rc3",
+  "version": "11.3",
   "description": "Tooling to support the Emscripten port of LÖVE.",
   "engines": {
     "node": ">=7.10.0",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TannerRogalsky/love.js.git"
+    "url": "git+https://github.com/Davidobot/love.js.git"
   },
   "author": "Tanner Rogalsky <tanner@tannerrogalsky.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TannerRogalsky/love.js/issues"
+    "url": "https://github.com/Davidobot/love.js/issues"
   },
-  "homepage": "https://github.com/TannerRogalsky/love.js#readme",
+  "homepage": "https://github.com/Davidobot/love.js#readme",
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
