@@ -1,51 +1,37 @@
 Love.js
 ============
+[![Travis](https://img.shields.io/travis/TannerRogalsky/love.js.svg)]() [![npm](https://img.shields.io/npm/v/love.js.svg)]()
 
-This is [LÖVE](https://love2d.org/) ported to the web using [Emscripten](https://kripken.github.io/emscripten-site/).
+This is [LÖVE](https://love2d.org/) ported to the web using [Emscripten](https://kripken.github.io/emscripten-site/). Or, more accurately, it is a tool to help you package your LÖVE game for the web as easily as possible.
 
-It differs from [Motor](https://github.com/rnlf/motor) or [Punchdrunk](https://github.com/TannerRogalsky/punchdrunk) in that it is not a reimplementation but a direct port of the existing LÖVE v0.10.0 code with very few code modifications. As such, it should be at feature parity, as long as the browser it's running in supports a given feature.
-
-## Examples
-Here are some live games:
-
-- [Mari0](http://tannerrogalsky.com/mari0/)
-- [Friendshape](http://tannerrogalsky.com/friendshape)
-- [Mr. Rescue](http://tannerrogalsky.com/mrrescue/)
-
-## Dependencies
-- Python 2.7
-
-Python 2.7 will allow you to package your game into a format that Emscripten can read. It will also let you run a simple web server for testing. Python 3.5 is not supported at this time.
+Love.js differs from [Motor](https://github.com/rnlf/motor) or [Punchdrunk](https://github.com/TannerRogalsky/punchdrunk) in that it is not a reimplementation but a direct port of the existing LÖVE code with very few code modifications. As such, it should be at feature parity, as long as the browser it's running in supports a given feature.
 
 ## Usage
-### Get the code.
-1. Clone the repository. `git clone https://github.com/TannerRogalsky/love.js.git`
-2. Clone the submodules: `git submodule update --init --recursive`
+`love.js [options] <input> <output>`
 
-### Package your game
-1. Navigate into the `debug` folder.
-2. Package your game.
-  - `python ../emscripten/tools/file_packager.py game.data --preload [path-to-game]@/ --js-output=game.js`
-  - This should output two files: `game.data` and `game.js` into the `debug` folder.
-  - Make sure you include the '@/' after the path to your game source. This will tell the file packager to place your game at the root of Emscripten's file system.
-  - Make sure your [path-to-game] does not contain any non ascii characters
+`<input>` can either be a folder or a `.love` file.
+`<output>` is a folder that will hold debug and release web pages.
+
+## Options:
+```
+-h, --help            output usage information
+-V, --version         output the version number
+-t, --title <string>  specify game name
+-m, --memory [bytes]  how much memory your game will require [16777216]
+```
 
 ### Test it
 1. Run a web server.
   - `python -m SimpleHTTPServer 8000` will work.
 2. Open `localhost:8000` in the browser of your choice.
 
-### Release it
-1. If everything looks good, nagivate to the `release` folder. Package and test your game for release.
-2. The `release-compatibility` folder can now be copied to a webserver. A simple static webserver should suffice.
-
-#### Release Types
-`release-compatibility` is recommended if the performance it yields is adequate. The difference between `compatibility` and `performance` is that `performance` is compiled with exception catching disabled and memory growth disabled. This means that you will not be able to rely on catching exceptions from C++ in your code and you may need to set `TOTAL_MEMORY` on the `Module` object to indicate how much memory your game will require.
-
-## Issues
-Some things, like threads, don't have browser support yet. Please check the project issues for known problems.
+## Notes
+- I strongly recommend that you package your game for release using another tool before using this tool to build it for the web. Using something like [love-release](https://github.com/MisterDA/love-release) to remove unused files and metadata and compress the game into a .love file will make running the game much faster.
+- Because of the way that Emscripten works, you must specify the maximum amount of memory that your game will require. Make sure you test your game thoroughly to ensure that you've allocated enough memory because your game will crash if you have not.
+- The emscripten submodule is provided as a reference to what this project is currently being built against. It includes a few patches that are not currectly on the main branch of emscripten.
+  - mutex lock on main thread fix: https://github.com/kripken/emscripten/pull/5243
+  - MODULARIZE pthreads fix: https://github.com/kripken/emscripten/pull/5016
+  - openal overhaul and fixes: https://github.com/jpernst/emscripten/commits/incoming
 
 ## Contributing
 Please consider submitting a test. Any functionality that isn't covered in `spec/tests` would be very useful.
-
-The build process for this project is still a very manual process and is not ready to be shared. Feel free to keep an eye on the `emscripten` branch of [my LÖVE fork](https://bitbucket.org/TannerRogalsky/love) if you're really curious.
