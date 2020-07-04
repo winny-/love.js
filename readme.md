@@ -37,6 +37,10 @@ The AudioContext was not allowed to start. It must be resumed (or created) after
 
 Some things don't work and I don't know why (the game screen will be gone). Working on it!
 
+Firefox doesn't like pthreads by default and spits out a `
+Uncaught ReferenceError: SharedArrayBuffer is not defined`. Fix is discussed [here](https://github.com/ggerganov/kbd-audio/issues/9). 
+
+
 ## Building
 Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.sh` (with minor changes for file paths)
 
