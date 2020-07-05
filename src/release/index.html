@@ -18,6 +18,15 @@
     </center>
 
     <script type='text/javascript'>
+      function goFullScreen(){
+          var canvas = document.getElementById("canvas");
+          if(canvas.requestFullScreen)
+              canvas.requestFullScreen();
+          else if(canvas.webkitRequestFullScreen)
+              canvas.webkitRequestFullScreen();
+          else if(canvas.mozRequestFullScreen)
+              canvas.mozRequestFullScreen();
+      }
       var loadingContext = document.getElementById('loadingCanvas').getContext('2d');
       function drawLoadingText(text) {
         var canvas = loadingContext.canvas;
@@ -87,7 +96,7 @@
     <script type="text/javascript" src="game.js"></script>
     <script async type="text/javascript" src="love.js" onload="applicationLoad(this)"></script>
     <footer>
-      <p>Built with <a href="https://github.com/TannerRogalsky/love.js">love.js</a></p>
+      <p>Built with <a href="https://github.com/Davidobot/love.js">love.js</a> <button onclick="goFullScreen();">Go Fullscreen</button></p>
     </footer>
   </body>
 </html>
