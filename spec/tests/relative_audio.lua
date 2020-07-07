@@ -13,7 +13,7 @@ local files = {
 }
 
 local function isRelative(source)
-  if source:getChannels() == 1 then
+  if source:getChannelCount() == 1 then
     return source:isRelative()
   else
     return false
