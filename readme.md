@@ -9,13 +9,14 @@ Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) t
 ## Usage
 ```
 npm install
-love.js [options] <input> <output>
+npm link
+love-js [options] <input> <output>
 ```
 
 `<input>` can either be a folder or a `.love` file.
 `<output>` is a folder that will hold debug and release web pages.
 
-You can also replace `love.js` in the above command with `index.js` directly if the numpy install is giving you problems.
+You can also replace `love-js` in the above command with `index.js` (or ` node index.js` on Windows) directly if the numpy install is giving you problems.
 
 ## Options:
 ```

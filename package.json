@@ -15,7 +15,7 @@
     "postversion": "git push && git push --tags"
   },
   "bin": {
-    "love.js": "./index.js"
+    "love-js": "./index.js"
   },
   "repository": {
     "type": "git",
