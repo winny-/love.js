@@ -36,18 +36,7 @@ You can also replace `love-js` in the above command with `index.js` (or ` node i
 1. Probably only works with Chrome at the moment.
 2. Memory is now dynamically resized even with pthreads thanks to [this](https://github.com/emscripten-core/emscripten/pull/8365). Still needs a large-enough initial memory until I figure out how to properly wait for the memory to be sized-up before initialising all the file-system stuff (pointers [here](https://emscripten.org/docs/getting_started/FAQ.html#how-can-i-tell-when-the-page-is-fully-loaded-and-it-is-safe-to-call-compiled-functions)).
 3. Shaders work (check out 3D demo), but are a bit finicky. For example, when using `love.graphics.newShader`, use the `love.graphics.newShader( pixelcode, vertexcode )` version (ie specify the pixel and vertex code separately; use the default ones if you don't need one of them)
-4. If you want to lock the mouse on canvas click, add something like this to the `index.html`'s script:
-```
-canvas.requestPointerLock = canvas.requestPointerLock ||
-                            canvas.mozRequestPointerLock;
-document.exitPointerLock = document.exitPointerLock ||
-                           document.mozExitPointerLock;
-canvas.onclick = function() {
-  canvas.requestPointerLock();
-}
-```
-(I should probably implement that as an override to LÖVE's `love.mouse.setGrabbed` or `love.mouse.setRelative`)
-
+4. If you use `love.mouse.setGrabbed` or `love.mouse.setRelative`, the user needs to click on the canvas to "lock" the mouse.
 5. Firefox doesn't like pthreads by default and spits out a
 `Uncaught ReferenceError: SharedArrayBuffer is not defined`. Fix is discussed [here](https://github.com/ggerganov/kbd-audio/issues/9). 
 
