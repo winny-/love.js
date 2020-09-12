@@ -11,6 +11,7 @@ commander
   .version(packageJson.version)
   .option('-t, --title <string>', 'specify game name')
   .option('-m, --memory [bytes]', 'how much memory your game will require [16777216]', 16777216)
+  .option('-c, --compatibility', 'specify flag to use compatibility version')
   .arguments('<input> <output>')
   .action((input, output) => {
     commander.input = input;
@@ -40,6 +41,7 @@ const getAdditionalInfo = async function getAdditionalInfo(parsedArgs) {
     memory: parsedArgs.memory,
     input: parsedArgs.input,
     output: parsedArgs.output,
+    compat: parsedArgs.compatibility,
   };
   args.input = parsedArgs.input || await prompt('Love file or directory: ');
   args.output = parsedArgs.output || await prompt('Output directory: ');
@@ -123,18 +125,23 @@ getAdditionalInfo(commander).then((args) => {
 
   fs.mkdirsSync(`${outputDir}`);
 
+  const fldr_name = args.compat ? "compat" : "release";
+
   {
-    const template = fs.readFileSync(`${srcDir}/release/index.html`, 'utf8');
+    const template = fs.readFileSync(`${srcDir}/${fldr_name}/index.html`, 'utf8');
     const renderedTemplate = mustache.render(template, args);
 
     fs.mkdirsSync(outputDir);
     fs.writeFileSync(`${outputDir}/index.html`, renderedTemplate);
     fs.writeFileSync(`${outputDir}/game.js`, renderedGameTemplate);
     fs.writeFileSync(`${outputDir}/game.data`, totalBuffer);
-    fs.copySync(`${srcDir}/release/love.js`, `${outputDir}/love.js`);
-    fs.copySync(`${srcDir}/release/love.worker.js`, `${outputDir}/love.worker.js`);
-    fs.copySync(`${srcDir}/release/love.wasm`, `${outputDir}/love.wasm`);
-    fs.copySync(`${srcDir}/release/theme`, `${outputDir}/theme`);
+    fs.copySync(`${srcDir}/${fldr_name}/love.js`, `${outputDir}/love.js`);
+    fs.copySync(`${srcDir}/${fldr_name}/love.wasm`, `${outputDir}/love.wasm`);
+    fs.copySync(`${srcDir}/${fldr_name}/theme`, `${outputDir}/theme`);
+
+    if (fldr_name === "release") {
+      fs.copySync(`${srcDir}/${fldr_name}/love.worker.js`, `${outputDir}/love.worker.js`);
+    }
   }
 }).catch((e) => {
   console.error(e.message); // eslint-disable-line no-console

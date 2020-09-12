@@ -7,6 +7,12 @@ Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) t
  * [Another Kind of World](https://davidobot.net/akow/)
  * [groverburger's 3D engine (g3d)](https://davidobot.net/3d/) (shaders, click canvas to lock)
 
+## Quickstart
+```
+love-js game.love game -c
+```
+Build a game with the compatibility version (so that it runs on more browsers, but is a tiny bit slower if you use threads)
+
 ## Usage
 ```
 npm install
@@ -25,6 +31,7 @@ You can also replace `love-js` in the above command with `index.js` (or ` node i
 -V, --version         output the version number
 -t, --title <string>  specify game name
 -m, --memory [bytes]  how much memory your game will require [16777216]
+-c, --compatibility   specify flag to use compatibility version
 ```
 
 ### Test it
@@ -33,16 +40,17 @@ You can also replace `love-js` in the above command with `index.js` (or ` node i
 2. Open `localhost:8000` in the browser of your choice.
 
 ## Notes
-1. Probably only works with Chrome at the moment.
-2. Memory is now dynamically resized even with pthreads thanks to [this](https://github.com/emscripten-core/emscripten/pull/8365). Still needs a large-enough initial memory until I figure out how to properly wait for the memory to be sized-up before initialising all the file-system stuff (pointers [here](https://emscripten.org/docs/getting_started/FAQ.html#how-can-i-tell-when-the-page-is-fully-loaded-and-it-is-safe-to-call-compiled-functions)).
-3. Shaders work (check out 3D demo), but are a bit finicky. For example, when using `love.graphics.newShader`, use the `love.graphics.newShader( pixelcode, vertexcode )` version (ie specify the pixel and vertex code separately; use the default ones if you don't need one of them)
-4. If you use `love.mouse.setGrabbed` or `love.mouse.setRelative`, the user needs to click on the canvas to "lock" the mouse.
-5. This should work with the latest Firefox version! It can throw `Uncaught ReferenceError: SharedArrayBuffer is not defined`. Fix is discussed [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#Security_requirements). TL;DR 
+1. Compatibility version (`-c`) should work with most browsers. The normal version works in the latest Chrome and should work with the latest Firefox version. 
+
+In Firefox, the normal version can throw `Uncaught ReferenceError: SharedArrayBuffer is not defined`. Fix is discussed [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#Security_requirements). TL;DR 
 Enable the following HTML reponse headers on the website you're hosting your project on:
 ```
 Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
+2. Memory is now dynamically resized even with pthreads thanks to [this](https://github.com/emscripten-core/emscripten/pull/8365). Still needs a large-enough initial memory until I figure out how to properly wait for the memory to be sized-up before initialising all the file-system stuff (pointers [here](https://emscripten.org/docs/getting_started/FAQ.html#how-can-i-tell-when-the-page-is-fully-loaded-and-it-is-safe-to-call-compiled-functions)).
+3. Shaders work (check out 3D demo), but are a bit finicky. For example, when using `love.graphics.newShader`, use the `love.graphics.newShader( pixelcode, vertexcode )` version (ie specify the pixel and vertex code separately; use the default ones if you don't need one of them). Depth buffers don't work properly in Firefox.
+4. If you use `love.mouse.setGrabbed` or `love.mouse.setRelative`, the user needs to click on the canvas to "lock" the mouse.
 
 ## Building
 ### MacOS
