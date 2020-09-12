@@ -3,9 +3,9 @@ Love.js for LÖVE v11.3
 Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) to the latest and greatest versions of LÖVE and Emscripten.
 
 ## Demos
- * [Specification Test](https://davidobot.net/lovejs_spec/) (threads, coroutines, shaders!)
- * [Another Kind of World](https://davidobot.net/akow/)
- * [groverburger's 3D engine (g3d)](https://davidobot.net/3d/) (shaders, click canvas to lock)
+ * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatability Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
+ * [Another Kind of World](https://davidobot.net/lovejs/akow/); [(Compatability Version)](https://davidobot.net/lovejs/akow_c/)
+ * [groverburger's 3D engine (g3d)](https://davidobot.net/lovejs/3d/); [(Compatability Version)](https://davidobot.net/lovejs/3d_c/) (shaders, click canvas to lock)
 
 ## Quickstart
 ```
@@ -40,7 +40,7 @@ You can also replace `love-js` in the above command with `index.js` (or ` node i
 2. Open `localhost:8000` in the browser of your choice.
 
 ## Notes
-1. Compatibility version (`-c`) should work with most browsers. The difference is that pthreads aren't used. This results in dodgy audio. 
+1. Compatibility version (`-c`) should work with most browsers. The difference is that pthreads aren't used. This results in *dodgy audio*. 
 2. The normal version works in the latest Chrome and should work with the latest Firefox version. 
 
 In Firefox, the normal version can throw `Uncaught ReferenceError: SharedArrayBuffer is not defined`. Fix is discussed [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#Security_requirements). TL;DR 
