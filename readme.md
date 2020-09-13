@@ -50,7 +50,19 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 3. Memory is now dynamically resized even with pthreads thanks to [this](https://github.com/emscripten-core/emscripten/pull/8365). Still needs a large-enough initial memory until I figure out how to properly wait for the memory to be sized-up before initialising all the file-system stuff (pointers [here](https://emscripten.org/docs/getting_started/FAQ.html#how-can-i-tell-when-the-page-is-fully-loaded-and-it-is-safe-to-call-compiled-functions)).
-4. Shaders work (check out 3D demo), but are a bit finicky. For example, you can't divide for now - memory alignment reasons.. Depth buffers don't work properly in Firefox.
+4. Shaders work (check out 3D demo), but require stricter type-checking. For example, when dividing or multiplying, you need both sides to have the same type. So something like
+```GLSL
+vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords)
+{
+    vec4 texturecolor = Texel(tex, texture_coords);
+    return texturecolor * color / 2;
+}
+```
+**won't** work, but changing line 4 to the code below will make everything run just fine:
+```GLSL
+return texturecolor * color / 2.0;
+```
+
 5. If you use `love.mouse.setGrabbed` or `love.mouse.setRelative`, the user needs to click on the canvas to "lock" the mouse.
 
 ## Building
