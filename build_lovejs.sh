@@ -21,5 +21,4 @@ source ~/git/emsdk/emsdk_env.sh
   emmake make -j 6
   cp love/love.js* ../../src/compat
   cp love/love.wasm ../../src/compat
-  cp love/love.worker.js ../../src/compat
 )
