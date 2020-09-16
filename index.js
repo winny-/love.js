@@ -83,7 +83,7 @@ getAdditionalInfo(commander).then((args) => {
     return `Module['FS_createPath']('${directoryPath}', '${splits[length]}', true, true);`;
   });
 
-  const AUDIO_SUFFIXES = ['.ogg', '.wav', '.mp3'];
+  const AUDIO_SUFFIXES = ['.ogg', '.wav', '.mp3', '.flac', '.xm'];
   const fileMetadata = [];
   const fileBuffers = [];
   let currentByte = 0;
