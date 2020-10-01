@@ -3,9 +3,9 @@ Love.js for LÖVE v11.3
 Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) to the latest and greatest versions of LÖVE and Emscripten.
 
 ## Demos
- * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatability Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
- * [Another Kind of World](https://davidobot.net/lovejs/akow/); [(Compatability Version)](https://davidobot.net/lovejs/akow_c/)
- * [groverburger's 3D engine (g3d)](https://davidobot.net/lovejs/3d/); [(Compatability Version)](https://davidobot.net/lovejs/3d_c/) (shaders, click canvas to lock)
+ * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatibility Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
+ * [Another Kind of World](https://davidobot.net/lovejs/akow/); [(Compatibility Version)](https://davidobot.net/lovejs/akow_c/)
+ * [groverburger's 3D engine (g3d)](https://davidobot.net/lovejs/3d/); [(Compatibility Version)](https://davidobot.net/lovejs/3d_c/) (shaders, click canvas to lock)
 
 ## Quickstart
 ```
