@@ -6,6 +6,7 @@ Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) t
  * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatibility Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
  * [Another Kind of World](https://davidobot.net/lovejs/akow/); [(Compatibility Version)](https://davidobot.net/lovejs/akow_c/)
  * [groverburger's 3D engine (g3d)](https://davidobot.net/lovejs/3d/); [(Compatibility Version)](https://davidobot.net/lovejs/3d_c/) (shaders, click canvas to lock)
+ * [Supported Graphical Features Test](https://davidobot.net/lovejs/features/); [(Compatibility Version)](https://davidobot.net/lovejs/features_c/)
 
 ## Quickstart
 ```
