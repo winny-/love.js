@@ -68,6 +68,8 @@ return texturecolor * color / 2.0;
 
 6. Use `love.filesystem.getInfo(file_name)` before trying to read a potentially non-existent file. 
 
+7. If you use a depth buffer, add the following line: `t.window.depth = 16` to your `config.lua` file to make sure normals aren't inverted in Firefox.
+
 ## Building
 ### MacOS
 Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.sh` (with minor changes for file paths).
