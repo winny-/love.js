@@ -14,10 +14,24 @@ love.js game.love game -c
 ```
 Build a game with the compatibility version.
 
-## Usage
-Install the package from `npm`; no need to download this repo
+## Installation
+Install the package from `npm`; no need to download this repo:
 ```
 npm i love.js
+```
+
+or _globally_:
+```
+npm -g i love.js
+```
+
+## Usage
+```
+npx love.js [options] <input> <output>
+```
+
+or
+```
 love.js [options] <input> <output>
 ```
 
