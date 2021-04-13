@@ -10,15 +10,15 @@ Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) t
 
 ## Quickstart
 ```
-love-js game.love game -c
+love.js game.love game -c
 ```
 Build a game with the compatibility version.
 
 ## Usage
+Install the package from `npm`; no need to download this repo
 ```
-npm install
-npm link
-love-js [options] <input> <output>
+npm i love.js
+love.js [options] <input> <output>
 ```
 
 `<input>` can either be a folder or a `.love` file.
