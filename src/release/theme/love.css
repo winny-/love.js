@@ -43,6 +43,7 @@ a:hover {
 /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
 #canvas {
     padding-right: 0;
-    display: none;
+    display: display;
     border: 0px none;
+    visibility: hidden;
 }

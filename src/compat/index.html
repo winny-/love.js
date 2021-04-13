@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1">
     <title>{{title}}</title>
 
     <!-- Load custom style sheet -->
@@ -12,20 +13,25 @@
     <center>
       <div>
         <h1>{{title}}</h1>
-        <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
         <canvas id="loadingCanvas" oncontextmenu="event.preventDefault()" width="800" height="600"></canvas>
+        <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
       </div>
     </center>
 
     <script type='text/javascript'>
       function goFullScreen(){
-          var canvas = document.getElementById("canvas");
-          if(canvas.requestFullScreen)
-              canvas.requestFullScreen();
-          else if(canvas.webkitRequestFullScreen)
-              canvas.webkitRequestFullScreen();
-          else if(canvas.mozRequestFullScreen)
-              canvas.mozRequestFullScreen();
+            var canvas = document.getElementById("canvas");
+            if(canvas.requestFullScreen)
+                canvas.requestFullScreen();
+            else if(canvas.webkitRequestFullScreen)
+                canvas.webkitRequestFullScreen();
+            else if(canvas.mozRequestFullScreen)
+                canvas.mozRequestFullScreen();
+      }
+      function FullScreenHook(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
       }
       var loadingContext = document.getElementById('loadingCanvas').getContext('2d');
       function drawLoadingText(text) {
@@ -69,7 +75,7 @@
             drawLoadingText(text);
           } else if (Module.remainingDependencies === 0) {
             document.getElementById('loadingCanvas').style.display = 'none';
-            document.getElementById('canvas').style.display = 'block';
+            document.getElementById('canvas').style.visibility = 'visible';
           }
         },
         totalDependencies: 0,
