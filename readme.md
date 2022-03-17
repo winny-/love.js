@@ -85,10 +85,20 @@ return texturecolor * color / 2.0;
 7. If you use a depth buffer, add the following line: `t.window.depth = 16` to your `config.lua` file to make sure normals aren't inverted in Firefox.
 
 ## Building
-### MacOS
+### MacOS / Linux
 Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.sh` (with minor changes for file paths).
 
 That should just work™. Make sure you have CMake installed, clone [emsdk](https://github.com/emscripten-core/emsdk) and edit `build_lovejs.sh` to point to the right paths.
+
+Set up emsdk with the following settings:
+
+``` bash
+./emsdk install 2.0.0
+./emsdk activate 2.0.0
+```
+
+Using V:2.0.0 is important as newer versions have depreciated `getMemory`
+
 
 ### Windows
 Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.bat` (with minor changes for file paths) in PowerShell.
