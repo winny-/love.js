@@ -1,4 +1,4 @@
-Love.js for LÖVE v11.3
+Love.js for LÖVE v11.4
 ============
 Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) to the latest and greatest versions of LÖVE and Emscripten.
 
@@ -97,7 +97,7 @@ Set up emsdk with the following settings:
 ./emsdk activate 2.0.0
 ```
 
-Using V:2.0.0 is important as newer versions have depreciated `getMemory`
+Note, using v:2.0.0 is important as newer versions have depreciated `getMemory`
 
 
 ### Windows
