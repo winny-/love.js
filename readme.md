@@ -35,10 +35,15 @@ or
 love.js [options] <input> <output>
 ```
 
+or (on Windows cmd and Powershell, according to https://github.com/Davidobot/love.js/issues/48)
+```
+npx love.js.cmd [options] <input> <output>
+```
+
 `<input>` can either be a folder or a `.love` file.
 `<output>` is a folder that will hold debug and release web pages.
 
-You can also replace `love-js` in the above command with `index.js` (or ` node index.js` on Windows) directly if the numpy install is giving you problems.
+You can also replace `love.js` in the above command with `index.js` (or ` node index.js` on Windows) directly if the numpy install is giving you problems.
 
 ## Options:
 ```
